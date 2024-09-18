@@ -1,0 +1,379 @@
+{% comment %} {% extends 'base.html' %}
+{% block content %} {% endcomment %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="CodeHim" />
+    <title>Carousel Gallery</title>
+
+    <!-- Google Fonts CSS -->
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=font1|font2|etc"
+      type="text/css"
+    />
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/2c7fc28a2f.js"></script>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/static/css/gallerystyle.css" />
+    <!-- Demo CSS (No need to include it into your project) -->
+    <link rel="stylesheet" href="/static/css/gallerydemo.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>Carousel Gallery of BharatYatra</h1>
+      <p>Image gallery that toggles between carousel and tiled views.</p>
+
+      <!-- <div class="action"> -->
+      <!-- <a href="https://www.codehim.com/carousel/javascript-carousel-gallery/" title="Back to download and tutorial page" class="btn back">Back to Tutorial</a> -->
+      <!-- </div> -->
+    </header>
+
+    <main>
+      <!-- Start DEMO HTML (Use the following code into your project)-->
+      <div id="container">
+        <div id="toggleContainer">
+          <label>Carousel</label>
+          <div id="toggle">
+            <div id="outer3">
+              <div id="slider3"></div>
+            </div>
+            <label>Tiles</label>
+          </div>
+        </div>
+        <div id="galleryView">
+          <div id="galleryContainer">
+            <div id="leftView"></div>
+            <button id="navLeft" class="navBtns">
+              <i class="fas fa-arrow-left fa-3x"></i>
+            </button>
+            <a id="linkTag">
+              <div id="mainView"></div>
+            </a>
+            <div id="rightView"></div>
+            <button id="navRight" class="navBtns">
+              <i class="fas fa-arrow-right fa-3x"></i>
+            </button>
+          </div>
+        </div>
+        <div id="tilesView">
+          <div id="tilesContainer"></div>
+        </div>
+      </div>
+      <!-- END EDMO HTML (Happy Coding!)-->
+    </main>
+
+    <footer class="credit">
+      Owners: BharatYatra - Distributed By:
+      <a
+        title="Awesome web design code & scripts"
+        {% comment %} href="https://www.codewithharry.com" {% endcomment %}
+        
+        {% comment %}
+          
+        
+        href="/"
+        target="_blank"
+        >BharatYatra</a
+        >
+      </footer>
+      
+      {% endcomment %}
+      <!-- Carousel Gallery JS -->
+      {% comment %} <script src="/static/js/gallery.js"></script> {% endcomment %}
+      {% comment %}
+  </body>
+</html> 
+{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .btn:focus,
+            .btn:active,
+            button:focus,
+            button:active {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            #image-gallery .modal-footer {
+                display: block;
+            }
+
+            .thumb {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        </style>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            id="bootstrap-css"
+        />
+    </head>
+    <body>
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous"
+        />
+        <div class="container">
+            <div class="row">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div> 
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Test1"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="modal fade"
+                    id="image-gallery"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4
+                                    class="modal-title"
+                                    id="image-gallery-title"
+                                ></h4>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                >
+                                    <span aria-hidden="true">×</span
+                                    ><span class="sr-only">Close</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img
+                                    id="image-gallery-image"
+                                    class="img-responsive col-md-12"
+                                    src=""
+                                />
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary float-left"
+                                    id="show-previous-image"
+                                >
+                                    <i class="fa fa-arrow-left"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="show-next-image"
+                                    class="btn btn-secondary float-right"
+                                >
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+

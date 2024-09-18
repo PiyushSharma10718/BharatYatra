@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BharatYatra's Gallery !</title>
+        <style>
+            .btn:focus,
+            .btn:active,
+            button:focus,
+            button:active {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            #image-gallery .modal-footer {
+                display: block;
+            }
+
+            .thumb {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        </style>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            id="bootstrap-css"
+        />
+    </head>
+    <body>
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous"
+        />
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <br><br>
+                <center>
+                    {% comment %} <button type="submit">Submit</button> {% endcomment %}
+                    <a href="/"><button type="submit">
+                        Go Back to Home Page !
+                    </button>
+                    </a>
+                </center>
+                <div class="row">
+
+                    {% for p in p_image %}
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="/lastpagegallery"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            {% comment %} data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" {% endcomment %}
+                            data-target="#image-gallery"
+                        >
+                            {% comment %} <img
+                                class="img-thumbnail"
+                                src="{{p.images.url}}" {% endcomment %}
+                                {% comment %} dekha do {% endcomment %}
+                                {% comment %} src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" {% endcomment %}
+                                {% comment %} alt="Another alt text"
+                            /> {% endcomment %}
+
+
+
+                            <img
+                                class="img-thumbnail"
+                                src="{{p.images.url}}"
+                                {% comment %} dekha do {% endcomment %}
+                                {% comment %} src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" {% endcomment %}
+                                alt="Another alt text"
+                                style="width: 100%;aspect-ratio: 3/5;object-fit: cover;"
+                            />
+
+
+
+
+
+                        </a>
+                            {% comment %} <img class="img-thumbnail" src="{{p.images.url}}" alt="Image" /> {% endcomment %}
+                    </div>
+                        {% endfor %}
+
+                    {% comment %} 
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div> 
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title=""
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Test1"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a
+                            class="thumbnail"
+                            href="#"
+                            data-image-id=""
+                            data-toggle="modal"
+                            data-title="Im so nice"
+                            data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            data-target="#image-gallery"
+                        >
+                            <img
+                                class="img-thumbnail"
+                                src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="Another alt text"
+                            />
+                        </a>
+                    </div> 
+                    {% endcomment %}
+                </div>
+
+                <div
+                    class="modal fade"
+                    id="image-gallery"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4
+                                    class="modal-title"
+                                    id="image-gallery-title"
+                                ></h4>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                >
+                                    <span aria-hidden="true"></span
+                                    ><span class="sr-only">Close</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img
+                                    id="image-gallery-image"
+                                    class="img-responsive col-md-12"
+                                    src=""
+                                />
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary float-left"
+                                    id="show-previous-image"
+                                >
+                                    <i class="fa fa-arrow-left"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="show-next-image"
+                                    class="btn btn-secondary float-right"
+                                >
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

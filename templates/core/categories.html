@@ -1,0 +1,176 @@
+{% extends 'base.html' %} {% block content %} {% comment %}
+<p>This is a Category Page !</p>
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+   
+    
+    <style>
+      /* header {
+          background-color: #333;
+          color: #fff;
+          padding: 1rem;
+      }
+
+      header h1 {
+          margin: 0;
+      }
+
+      nav {
+          background-color: #555;
+          padding: 1rem;
+      }
+
+      nav ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      nav ul li {
+          display: inline-block;
+          margin-right: 1rem;
+      }
+
+      nav ul li a {
+          color: #fff;
+          text-decoration: none;
+      } */
+
+      .catmain {
+        padding: 0;
+    }
+
+    .catmain .cath1 {      
+      padding: 3rem 10%;
+    }
+
+    .catcategory-grid {
+      padding: 1rem 10%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(285px, 2fr));
+        grid-gap: 1.5rem;
+    }
+
+    .catcategory-item {
+      width: 285px;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .catcategory-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .catcategory-item h3 {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .catcategory-item p {
+      font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .catcategory-item a {
+        display: block;
+        background-color: #333;
+        font-size: 1.5rem;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        text-decoration: none;
+    }
+  </style>
+  
+  </head>
+  <body>
+    <main class="catmain">
+      <h1 class="cath1">{{ categories.count }} Categories </h1>
+      <section class="catcategory-grid">
+        {% for c in categories %}
+          <div class="catcategory-item">
+              <img src="{{c.image.url}}" />
+              <h3>{{ c.title }}</h3>
+              <p>
+                {{ c.category.count }} Package{{ c.category.count|pluralize:"s" }}
+              </p>
+              <a href="{% url 'core:category_packages' c.cid %}">Explore</a>
+          </div>
+          {% endfor %}
+      </section>
+  </main>
+  <!--  <div class="container" style="margin-top: 50px">
+      <div class="row">
+        <h1>{{ categories.count }} Categories </h1>
+        
+        {% for c in categories %}
+
+        <div class="col-md-3">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="{{c.image.url}}" />
+            </div>
+            <div class="card-heading">{{ c.title }}</div>
+            <div class="card-text">
+              
+            {{ c.category.count }} Package{{ c.category.count|pluralize:"s" }}
+            </div>
+            <a href="{% url 'core:category_packages' c.cid %}" class="card-button">Explore</a>
+          </div>
+        </div>
+
+        {% endfor %} -->
+
+        {% comment %} <div class="col-md-3">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="/static/images/categories/religious.jpg" />
+            </div>
+            <div class="card-heading">Religious</div>
+            <div class="card-text">
+              Audi Q8 is a full-size luxury crossover SUV coupé made by Audi
+              that was launched in 2018.
+            </div>
+            <a href="/pag1" class="card-button"> Explore</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="/static/images/categories/adventure.jpg" />
+            </div>
+            <div class="card-heading">Adventure</div>
+            <div class="card-text">
+              Audi Q8 is a full-size luxury crossover SUV coupé made by Audi
+              that was launched in 2018.
+            </div>
+            <a href="/pag1" class="card-button"> Explore</a>
+          </div>
+        </div>
+        <div class="col-md-3"> 
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="/static/images/categories/honeymoon.jpg" />
+            </div>
+            <div class="card-heading">Honeymoon</div>
+            <div class="card-text">
+              Audi Q8 is a full-size luxury crossover SUV coupé made by Audi
+              that was launched in 2018.
+            </div>
+            <a href="/pag1" class="card-button"> Explore</a>
+          </div>
+        </div> {% endcomment %
+      </div>
+    {% comment %} </div> {% endcomment %}
+  </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,485 @@
+{% extends 'partials/base.html' %} {% block content %}
+
+<style>
+  .price_offer {
+    position: absolute;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    background-color: red;
+    color: #fff;
+    z-index: 1;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .search {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    /* place-items: center; */
+}
+
+.search-container {
+    width: 100%;
+}
+
+.search-container input {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background-color: #ccc;
+    border: 1px solid #aaa;
+}
+
+input[type="search"] {
+    padding: 0 20px 0 45px;
+    border: 1px solid #aaa;
+    font-size: 17px;
+    border-radius: 20px;
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+    background-image: url("search.svg");
+    transition: 0.5s all ease-in-out;
+    filter: brightness(100%);
+}
+
+input[type="search"]:focus,
+input[type="search"]:not(:placeholder-shown) {
+    outline: none;
+    background-color: #aaaaab;
+    filter: brightness(110%);
+}
+
+.search-btn, .mic-btn {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.search-btn span, .mic-btn span {
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-btn:focus, .mic-btn:focus {
+    outline: none;
+    background-color: #aaaaab;
+    filter: brightness(110%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.catmain {
+  padding: 0;
+}
+
+{% comment %} .catmain .cath1 {      
+padding: 3rem 10%;
+} {% endcomment %}
+
+.catcategory-grid {
+padding: 1rem 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(285px, 2fr));
+  grid-gap: 1.5rem;
+}
+
+.catcategory-item {
+width: 285px;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.catcategory-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.catcategory-item h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.catcategory-item p {
+font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.catcategory-item a {
+  display: block;
+  background-color: #333;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.explore_packages {
+  padding: 20px;
+  /* background-color: #f0f0f0; */
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.explore_packages .head {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.explore_packages .head a {
+font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<!-- home section starts  -->
+
+<section class="home">
+  <div class="swiper home-slider">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide slide"
+        {% comment %} style="background: url(/static/images/home-slide-1.jpg) no-repeat" {% endcomment %}
+        style="background: url(/static/images/indexslider/Mountain.jpg) no-repeat"
+      >
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>travel around the Bharat</h3>
+          <a href="/packages" class="btn">discover more</a>
+        </div>
+      </div>
+
+      <div
+        class="swiper-slide slide"
+        {% comment %} style="background: url(/static/images/home-slide-2.jpg) no-repeat" {% endcomment %}
+        style="background: url(/static/images/indexslider/snow4k.jpg) no-repeat"
+
+      >
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>make your tour worthwhile</h3>
+          <a href="/packages" class="btn">discover more</a>
+        </div>
+      </div>
+
+      <div
+        class="swiper-slide slide"
+        {% comment %} style="background: url(/static/images/home-slide-3.jpg) no-repeat" {% endcomment %}
+        style="background: url(/static/images/indexslider/WATERFALL.jpg) no-repeat"
+
+      >
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>Explore your dream places</h3>
+          <a href="/packages" class="btn">discover more</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- If we need navigation buttons -->
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- home section ends  -->
+
+<!-- services section starts  -->
+
+{% comment %} isko toh hata na hi tha ! {% endcomment %}
+
+<!-- services section end  -->
+
+<!-- home package section stars  -->
+
+
+{% comment %} <section>
+    <div class="search">
+      <form action="{% url 'core:search' %}" method="GET">
+        <input type="text" style='background-color:black; color:white; height:50px; width:100%; font-size:20px; font-weight: bold; ' name="q" placeholder="Search for your Package !"/>
+        <button style='height:50px; background-color:grey; color:black; font-size:20px; font-weight: bold; width: 100%;' class="fas fa-search" type="submit">Search</button>
+      </form>
+  </div>
+</section> {% endcomment %}
+
+
+<section class="home-packages">
+  <h1 class="heading-title">our packages</h1>
+      <div class="search">
+        <form class="search" action="{% url 'core:search' %}" method="GET">
+            <div class="search-container">
+                <input type="search" name="q" id="" placeholder="Search Package" />
+            </div>
+            <button class="search-btn" type="submit">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            {% comment %} <button class="mic-btn" type="submit">
+                <span class="material-symbols-outlined">mic</span>
+            </button> {% endcomment %}
+        </form>
+      </div>
+
+  <div class="box-container">
+
+    {% for p in packages|slice:":3" %}    
+    <div class="box">
+      <div class="image">
+        <div class="price_offer">
+          <b>-{{ p.get_percentage|floatformat:0 }}% OFF</b>
+        </div>
+        <img src="{{ p.image.url }}" alt="" />
+      </div>
+      <div class="content">
+        <h3>{{ p.title }}</h3>
+        <h4>{{ p.category.title }}</h4>
+        <h3>Rs. {{ p.price|floatformat:0 }} </h3>
+        <h5 style="text-decoration:line-through;">
+          Rs. {{ p.old_price|floatformat:0 }} 
+        </h5>
+        <p>
+          {{ p.description|truncatechars:149 | safe }}
+        </p>
+        <a href="{% url 'core:package_details' p.pid %}" class="btn">More Info</a>
+
+
+        
+        {% if request.user.is_authenticated %} 
+        <a href="{% url 'core:book' p.pid %}" class="btn">book now</a>
+        {% else %}
+        <a class="btn" href="{% url 'userauths:sign-in' %}">Book now!</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="load-more">
+    <a href="/packages" class="btn">load more</a>
+  </div>
+</section>
+
+<!-- home package section ends  -->
+
+<!-- home offer section starts  -->
+
+{% comment %} isko toh hata na hi tha ! {% endcomment %}
+
+<!-- home offer section ends  -->
+
+<main class="catmain">
+  {% comment %} <h1 class="cath1">{{ categories.count }} Categories </h1> {% endcomment %}
+  <style>
+    .head {
+      width: 100%;
+      padding: 5rem 10%;
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cate {
+      padding: 10PX;
+      background-color: purple;
+      color: white;
+      border-radius: 25px;
+    }
+
+    .cate button {
+      background-color: purple;
+      color: white;
+    }
+  </style>
+  <div class="explore_packages">
+    <div class="head">
+    {% comment %} <h1 class="cath1">{{ categories.count }} Categories </h1> {% endcomment %}
+    <h1 class="cath1"> Categories </h1>
+      <a href="/categories" class="cate">
+        <button type="submit">View All Categories</button>
+    </a>
+  </div>
+  </div>
+  {% comment %} <center>
+    <b>
+      <h1 class="cath1"> Categories ... </h1>
+    </b>
+  </center> {% endcomment %}
+  <section class="catcategory-grid">
+    {% for c in categories|slice:4 %}
+      <div class="catcategory-item">
+          <img src="{{c.image.url}}" />
+          <h3>{{ c.title }}</h3>
+          <p>
+            {{ c.category.count }} Package{{ c.category.count|pluralize:"s" }}
+          </p>
+          <a href="{% url 'core:category_packages' c.cid %}">Explore</a>
+      </div>
+      {% endfor %}
+  </section>
+</main>
+<br><br><br>
+
+<!-- home about section stars  -->
+
+<section class="home-about">
+  <div class="image">
+    <img src="/static/images/about-img.jpg" alt="" />
+  </div>
+
+  <div class="content">
+    <h3>about us</h3>
+    <p>{{ aboutinfo | truncatechars:500 | safe }}
+    </p>
+    <a href="/about" class="btn">read more</a>
+  </div>
+</section>
+
+
+
+<!-- home about section ends  -->
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% comment %} {% extends 'base.html' %} {% block content %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            /* text-align: center; */height: 98vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            align-items: center;
+            justify-content: center;
+            background-color: whote;
+            color: #8e44ad;
+        }
+        .p {
+            height: 0;
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+        }
+        .p:nth-child(even) {
+            height: 0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <section class="error">
+        <p class="p">404</p>
+        <br><br><br>
+        <p class="p">Page Not Found</p>
+    </section>
+</body>
+</html>
+{% endblock %} {% endcomment %}
+
+<!-- error.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+    <h1>An error occurred</h1>
+    <p>We apologize for the inconvenience. Please try again later.</p>
+</body>
+</html>

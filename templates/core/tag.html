@@ -1,0 +1,807 @@
+{% extends 'base.html' %} {% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Details | Package | BharatYatra</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
+            }
+
+            .inner_container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .package_name {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+            }
+
+            .package_name .left {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 70%;
+            }
+
+            .package_name .left h3 {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .package_name .left h4 {
+                margin: 0;
+            }
+
+            .package_name .left a {
+                /* text-align: center; */
+                /* gap: 5px; */
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .package_name .left a .loc {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                /* justify-content: center; */
+            }
+
+            .package_name .left a .material-symbols-outlined {
+                font-size: 1.28rem;
+                color: #000;
+            }
+
+            .package_name .left a:hover {
+                text-decoration: none;
+            }
+
+            .package_name .right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 30%;
+                padding: 20px;
+                border-left: 1px solid #ddd;
+            }
+
+            .package_name .right .price {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            .package_name .right button {
+                background-color: #0056b3;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .package_name .right button:hover {
+                background-color: #003d73;
+            }
+
+            .images {
+                width: 100%;
+                height: 100%;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                overflow: hidden;
+                margin-top: 20px;
+            }
+
+            .description {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+            }
+
+            .description h4 {
+                margin: 0;
+                margin-top: 20px;
+            }
+
+            .duration {
+                display: flex;
+                gap: 100px;
+                /* justify-content: space-between; */
+                align-items: center;
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .duration .days {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .location {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .location .map {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .location iframe {
+                width: 100%;
+                height: 300px;
+            }
+
+            .explore_packages {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .carousel-wrapper {
+                width: 100%;
+                /* max-width: 900px; */
+                aspect-ratio: 16/9;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .slide {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+                position: absolute;
+                transition: transform 300ms ease-out;
+            }
+
+            .slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: inherit;
+            }
+
+            .carousel-wrapper .btn {
+                font-size: 2rem;
+                background: rgba(0, 0, 0, 0.7);
+                color: #00c2d8;
+                padding: 8px 10px;
+                border-radius: 50%;
+                border: none;
+                margin: 10px;
+                position: absolute;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+            .carousel-wrapper .btn:hover {
+                background: rgba(0, 0, 0, 1);
+            }
+            .btn.previous {
+                top: 50%;
+                left: 0;
+            }
+            .btn.next {
+                top: 50%;
+                right: 0;
+            }
+            
+            {% comment %} i have added this in this style ! {% endcomment %}
+
+            .image-container {
+                display: flex;
+            }
+            
+            img {
+                margin: 10px;
+                width: 150px;
+                height: auto;
+            }
+            
+            .rounded {
+                border-radius: 15px;
+            }
+        </style>
+
+
+        {% comment %} i have added this style ! {% endcomment %}
+
+        <style>
+            {% comment %} 
+            :root{
+                --main-color:#8e44ad;
+                --black: #222;
+                --white: #fff;
+                --light-black: #777;
+                --light-white: #fff9;
+                --dark-bg: rgba(0, 0, 0, .7);
+                --light-bg: #eee;
+                --border: .1rem solid var(--black);
+                --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+                --text-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .3);
+            }
+
+            .btn{
+                display: inline-block;
+                background: var(--black);
+                margin-top: 1rem;
+                color: var(--white);
+                font-size: 1.7rem;
+                padding: 1rem 3rem;
+                cursor: pointer;
+            }
+            
+            .btn:hover {
+                background: var(--main-color);
+            }
+            {% endcomment %}
+            {% comment %} class box start {% endcomment %}
+
+            {% comment %} .box{
+                padding: 3rem 2rem;
+                text-align: center;
+                background: var(--main-color);
+                cursor: pointer;
+            }
+            .box:hover{
+                background: var(--black);
+            }
+            .box img{
+                height: 7rem;
+            }
+            
+            .box h3{
+                color: var(--white);
+                font-size: 1.7rem;
+                padding-top: 1rem;
+            }
+            
+            .box {
+                border: var(--border);
+                box-shadow: var(--box-shadow);
+                background: var(--white);
+            }
+
+            .box .content{
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .box .content h3{
+                font-size: 2.5rem;
+                color: var(--black);
+            }
+
+            .box {
+                border: var(--border);
+                box-shadow: var(--box-shadow);
+                background: var(--white);
+                display: none;
+            }
+
+            .box:nth-child(1),
+            .box:nth-child(2),
+            .box:nth-child(3),
+            .box:nth-child(4),
+            .box:nth-child(5),
+            .box:nth-child(6){
+                display: inline-block;
+            }
+
+            .box:hover .image img{
+                transform: scale(1.1);
+            }
+
+            .box .image{
+                height: 25rem;
+                overflow: hidden;
+            }
+
+            .box .image img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                transition: .2s linear;
+            }
+
+            .box .content{
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .box .content h3{
+                font-size: 2.5rem;
+                color: var(--black);
+            }
+
+            .box .content p{
+                font-size: 1.5rem;
+                color: var(--light-black);
+                line-height: 2;
+                padding: 1rem 0;
+            }
+            .box h3{
+                color: var(--white);
+                font-size: 2.5rem;
+                padding-bottom: 2rem;
+            }
+
+            .box a{
+                color: var(--light-white);
+                font-size: 1.5rem;
+                padding-bottom: 1.5rem;
+                display: block;
+            }
+
+            .box a i{
+                color: var(--main-color);
+                padding-right: .5rem;
+                transition: .2s linear;
+            }
+
+            .box a:hover i{
+                padding-right: 2rem;
+            } {% endcomment %}
+            {% comment %} class box end {% endcomment %}
+
+            {% comment %} class image start {% endcomment %}
+
+            {% comment %} .image{
+                flex: 1 1 41rem;
+            }
+
+            .image img{
+                width: 100%;
+            }
+            .image{
+                flex: 1 1 41rem;
+
+            }
+
+            .image img{
+                width: 100%;
+            } {% endcomment %}
+
+            {% comment %} class image end {% endcomment %}
+
+            {% comment %} class content start {% endcomment %}
+
+            
+            {% comment %} .home .slide .content{
+                width: 85rem;
+                display: none;
+            }
+
+            .home .swiper-slide-active .content{
+                display: inline-block;
+            }
+
+            .home .slide .content span{
+                display: block;
+                font-size: 2.2rem;
+                color: var(--light-white);
+                padding-bottom: 1rem;
+                animation:fadeIn .2s linear backwards .2s;
+            }
+
+            .home .slide .content h3{
+                font-size: 6vw;
+                color: var(--white);
+                text-transform: uppercase;
+                line-height: 1;
+                text-shadow: var(--text-shadow);
+                padding: 1rem 0;
+                animation:fadeIn .2s linear backwards .4s;
+            }
+
+            .home .slide .content .btn{
+                animation:fadeIn .2s linear backwards .6s;
+            }
+
+
+            .home-about .content{
+                flex: 1 1 41rem;
+                padding: 3rem;
+                background: var(--light-bg);
+            }
+
+            .home-about .content h3{
+                font-size: 3rem;
+                color: var(--black);
+            }
+
+            .home-about .content p{
+                font-size: 1.5rem;
+                padding: 1rem 0;
+                line-height: 2;
+                color: var(--black);
+            }
+
+
+            .home-packages .box-container .box .content{
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .home-packages .box-container .box .content h3{
+                font-size: 2.5rem;
+                color: var(--black);
+            }
+
+            .home-packages .box-container .box .content p{
+                font-size: 1.5rem;
+                color: var(--light-black);
+                line-height: 2;
+                padding: 1rem 0;
+            }
+
+            .home-offer .content{
+                max-width: 70rem;
+                margin:0 auto;
+            }
+
+            .home-offer .content h3{
+                font-size: 3.5rem;
+                text-transform: uppercase;
+                color: var(--black);
+            }
+
+            .about .content{
+                flex: 1 1 41rem;
+                text-align: center;
+            }
+
+            .content h3{
+                font-size: 3rem;
+                color: var(--black);
+            }
+
+            .content p{
+                font-size: 1.5rem;
+                color: var(--light-black);
+                line-height: 2;
+                padding: 1rem 0;
+            }
+
+            .content .icons-container{
+                margin-top: 2rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                align-items: flex-end;
+            }
+
+            .content .icons-container .icons{
+                background-color: var(--light-bg);
+                padding: 2rem;
+                flex: 1 1 16rem;
+            }
+
+            .content .icons-container .icons i{
+                font-size: 4rem;
+                margin-bottom: 2rem;
+                color: var(--main-color);
+            }
+
+            .content .icons-container .icons span{
+                font-size: 1.5rem;
+                color: var(--light-black);
+                display: block;
+            }
+
+
+
+            @media(max-width:991px){
+            
+                html{
+                    font-size: 55%;
+                }
+
+                section{
+                    padding: 3rem 2rem;
+                }
+                .home .slide .content h3{
+                    font-size: 10vw;
+                }
+            } {% endcomment %}
+
+
+            {% comment %} class content end {% endcomment %}
+
+
+
+
+
+
+            .price_offer {
+              position: absolute;
+              padding: 5px;
+              text-align: center;
+              font-size: 14px;
+              background-color: red;
+              color: #fff;
+              z-index: 1;
+            }
+          </style>
+
+
+    </head>
+    <body>
+        <main class="container">
+            <section class="inner_container">
+                {% comment %} <div class="package_name"> {% endcomment %}
+                    {% comment %} <div class="left">
+                        <h3 class="name">{{p.title}}</h3>
+                        <h4 class="category">{{p.category.title}}</h4>
+                        <a href="#">
+                            <div class="loc">
+                                <span class="material-symbols-outlined">
+                                    location_on
+                                </span>
+                                <h4 class="p">Dwarks, Gujarat
+                                </h4>
+                            </div>
+                            <br>
+                            <br>
+                        </a>
+                        <h5>{{p.specifications|truncatechars:149}}</h5>
+                    </div> {% endcomment %}
+                    {% comment %} <div class="right"> {% endcomment %}
+                        {% comment %} <h4 class="price price_offer">-{{p.get_percentage|floatformat:0}}% OFF</h4>
+                        <br>
+                        <br>
+                        <br> {% endcomment %}
+                        {% comment %} <a href="/packages">
+                            <button type="submit">View All Packages</button>
+                        </a>
+                    </div> {% endcomment %}
+                    {% comment %} <div class="right">
+                        
+                        <h4 class="price price_offer">-{{p.get_percentage|floatformat:0}}% OFF</h4>
+                        <br>
+                        <br>
+                        <br>
+                        
+                        <h3 class="price">Price is : ₹{{p.price|floatformat:0}}</h3>
+                        <h6 class="">Old Price is : ₹{{p.old_price|floatformat:0}}</h6>
+                        <a href="/book">
+                            <button type="submit">Book Now</button>
+                        </a>
+                    </div> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+
+                {% comment %} <div class="images">
+                    <div class="carousel-wrapper">
+                        
+                        <div class="slide" data-slide>}
+                            <img
+                                src="{{ p.image.url }}"
+                                alt="Image"
+                            />
+                        </div>
+                        
+                        {% for p in p_image %}
+                        <div class="slide" data-slide>
+                            <img
+                            src="{{p.images.url}}"
+                            alt="Image"
+                            />
+                        </div>
+                        {% endfor %}
+
+                        <button class="btn previous" data-button="previous">
+                            <
+                        </button>
+                        <button class="btn next" data-button="next">></button>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} i have added this in this layout ! {% endcomment %}
+                
+                {% comment %} <div class="image-container">
+                    <img src="{{p.image.url}}" alt="" class="rounded">
+                    {% for p in p_image %}
+                    <img src="{{p.images.url}}" alt="" class="rounded">
+                    {% endfor %}
+                </div> {% endcomment %}
+
+                {% comment %} <div class="description">
+                    <h4>Description:</h4>
+                    <p>{{p.description}}
+                    </p>
+                    <hr>
+                    <p>{{p.specifications}}
+                    </p>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="duration">
+                    <h4>Published On : </h4>
+                    <div class="days"> {% endcomment %}
+                        {% comment %} <div class="date">{{p.published_date}}</div> {% endcomment %}
+                        {% comment %} <div class="date">{{p.published_date|date:"d M, Y"}}</div>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="duration"> {% endcomment %}
+                    {% comment %} <h4>Book the Package within Published Date : </h4> {% endcomment %}
+                    {% comment %} <div class="days">
+                        <h4 class="date"> Book the Package within {{p.package_life_date}} Day{{p.package_life_date|pluralize}} From Published Date ! </h4>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="duration">
+                    <h4>Package{{p.package_left_count|pluralize}} Left : </h4>
+                    <div class="days">
+                        <div class="date"> Only {{p.package_left_count}} Package{{p.package_left_count|pluralize}} </div>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="duration">
+                    <h4>Packages Dates : </h4>
+                    <div class="days">
+                        <div class="date">From : 01-01-2024</div>
+                        <span>-----></span>
+                        <div class="date">To : 01-02-2024</div>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="duration">
+                    <h4>Tags : </h4>
+                    <div class="days">
+                        <div class="date"> 
+                            {%for tag in p.tags.all%} 
+                            <a href="#">
+                                #{{tag.name}},
+                            </a>
+                            {% endfor %} </div>
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="location">
+                    <div class="map">
+                        <span class="material-symbols-outlined"> map </span>
+                        <h4>Location</h4>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74843083433!2d72.41492986821524!3d23.020474100489913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709291683745!5m2!1sen!2sin"
+                        width="400"
+                        height="250"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="explore_packages">
+                    {% if packages %}
+                    <h1>Below are the Related Packages of {{p.category.title}} ! </h1>
+                    {% else %}
+                    <h1>Oops, There are no Related Packages in {{p.category.title}} Category ! Sorry</h1>
+                    <h3>Be Patient ...</h3>
+                    {% endif %}
+                    <div class="packages"> {% endcomment %}
+                        {% comment %} More Packages yaha par offer wala ya packages wala section dal dena {% endcomment %}
+
+
+
+
+                        {% comment %} Make the a tag from here ! {% endcomment %}
+
+                        <h1> We are having {{packages.count}} Package{{packages.count|pluralize}} in <a href="">{{tag.name}}</a> Tag !</h1>
+
+                        {% for p in packages %}
+                        <div class="box">
+                          <div class="image">
+                            <div class="price_offer">
+                              <b>-{{ p.get_percentage|floatformat:0 }}% OFF</b>
+                            </div>
+                            {% comment %} <span><b>-{{ p.get_percentage|floatformat:0 }}% OFF</b></span> {% endcomment %}
+                            <img src="{{ p.image.url }}" alt="" />
+                          </div>
+                          <div class="content">
+                            <h3>{{ p.title }}</h3>
+                            <h4>{{ p.category.title }}</h4>
+                            <h3>Rs. {{ p.price|floatformat:0 }} </h3>
+                            <h5>Rs. {{ p.old_price|floatformat:0 }} </h5>
+                            <p>
+                              {{ p.description | safe }}
+                            </p>
+                            <a href="{% url 'core:package_details' p.pid %}" class="btn">More Info</a>
+                            <a href="/book" class="btn">book now</a>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+                    {% comment %} </div>
+                </div> {% endcomment %}
+            </section>
+        </main>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+        {% comment %} <script>
+            const slides = document.querySelectorAll("[data-slide]");
+            const buttons = document.querySelectorAll("[data-button]");
+
+            let currSlide = 0;
+            let maxSlide = slides.length - 1;
+
+            const updateCarousel = (number = 0) => {
+                slides.forEach((slide, index) => {
+                    slide.style.transform = `translateX(${
+                        (index - number) * 100
+                    }%)`;
+                });
+            };
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    button.dataset.button == "next" ? ++currSlide : --currSlide;
+
+                    if (currSlide > maxSlide) {
+                        currSlide = 0;
+                    } else if (currSlide < 0) {
+                        currSlide = maxSlide;
+                    }
+
+                    updateCarousel(currSlide);
+                });
+            });
+            updateCarousel(currSlide);
+
+            setInterval(() => {
+                currSlide++;
+                if (currSlide > maxSlide) {
+                    currSlide = 0;
+                }
+                updateCarousel(currSlide);
+            }, 3000);
+        </script> {% endcomment %}
+    </body>
+</html>
+
+{% endblock %}

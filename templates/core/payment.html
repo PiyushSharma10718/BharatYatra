@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Calculator</title>
+</head>
+<body>
+    <h1>Payment Calculator</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="payment_amount">Enter Payment Amount:</label>
+        <input type="number" name="payment_amount" id="payment_amount" required>
+        <a href="/book">
+            <button type="submit">Calculate</button>
+        </a>
+    </form>
+    <div>
+        {% if calculated_payment %}
+            <p>Calculated Payment: {{ calculated_payment }}</p>
+        {% endif %}
+    </div>
+    <div>
+        <h2>.01% of Each Payment:</h2>
+        <ul>
+            {% for amount in amounts_list %}
+                <li>{{ amount }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

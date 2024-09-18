@@ -1,0 +1,929 @@
+{% extends 'base.html' %} {% block content %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing Details !</title>
+    <link rel="stylesheet" href="/static/css/billing.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container"> {% endcomment %}
+      {% comment %} <form
+        class="text-center border border-light p-5"
+        action="/"
+        method="POST"
+      >
+        {% csrf_token %}
+        <p>Amount : Rs. {{amount}}</p>
+        <br />
+
+        <button id="rzp-button1">Pay</button>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+          var options = {
+            key: "api_key", // Enter the Key ID generated from the Dashboard
+            name: "BharatYatra", //your business name
+            description: "BharatYatra Test Transaction",
+            image: "https://example.com/your_logo",
+            order_id: "order_id", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            handler: function (response) {
+              alert(response.razorpay_payment_id);
+              alert(response.razorpay_order_id);
+              alert(response.razorpay_signature);
+            },
+            prefill: {
+              //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+              name: "Gaurav Kumar", //your customer's name
+              email: "gaurav.kumar@example.com",
+              contact: "9000090000", //Provide the customer's phone number for better conversion rates
+            },
+            notes: {
+              address: "Razorpay Corporate Office",
+            },
+            theme: {
+              color: "#3399cc",
+            },
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.on("payment.failed", function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+          });
+          document.getElementById("rzp-button1").onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+          };
+        </script> {% endcomment %}
+
+        {% comment %}
+        <input
+          type="name"
+          name="name"
+          id="name"
+          required
+          class="form-control mb-4"
+          placeholder="Name"
+        />
+        {% endcomment %} {% comment %}
+        <div class="row">
+          <div class="col">
+            <h3 class="title">billing address</h3>
+            <div class="inputBox">
+              <span>full name</span>
+              <input type="text" placeholder="Ashish" />
+            </div>
+
+            <div class="inputBox">
+              <span>email</span>
+              <input type="email" placeholder="bss@gmail.com" />
+            </div>
+
+            <div class="inputBox">
+              <span>phone number</span>
+              <input type="text" placeholder="2324353554" />
+            </div>
+
+            <div class="inputBox">
+              <span>address</span>
+              <input type="address" placeholder="house no., street, locality" />
+            </div>
+
+            <div class="inputBox">
+              <span>city</span>
+              <input type="text" placeholder="ex= ahhmedabad" />
+            </div>
+
+            <div class="flex">
+              <div class="inputBox">
+                <span>state</span>
+                <input type="text" placeholder="ex= gujarat" />
+              </div>
+
+              <div class="inputBox">
+                <span>zip code</span>
+                <input type="text" placeholder="123456" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <h3 class="title">Payment</h3>
+
+            <div class="inputBox">
+              <span>card accepted</span>
+              <input type="text" placeholder="Ashish" />
+            </div>
+
+            <div class="inputBox">
+              <span>name on card</span>
+              <input type="text" placeholder="ashish verma" />
+            </div>
+
+            <div class="inputBox">
+              <span>credit/debit card number</span>
+              <input type="number" placeholder="1111-1111-1111-1111" />
+            </div>
+
+            <div class="inputBox">
+              <span>expiry month</span>
+              <input type="number" placeholder="02" />
+            </div>
+
+            <div class="flex">
+              <div class="inputBox">
+                <span>expiry year</span>
+                <input type="number" placeholder="1234" />
+              </div>
+
+              <div class="inputBox">
+                <span>CVV</span>
+                <input type="number" placeholder="123" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endcomment %} {% comment %}
+        <input type="submit" value="proceed to Pay" class="submit-btn" /> {%
+        endcomment %} {% comment %}
+        <script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          data-key="rzp_test_9JY59296zF9WQ8"
+          data-amount="100"
+          data-currency="INR"
+          data-order_id="{{ payment.id }}"
+          data-buttontext="Pay with Razorpay"
+          data-name="BharatYatra"
+          data-description="Payment Processing ....."
+          data-image="https://example.com/your_logo.jpg"
+          data-prefill.name="BY"
+          data-prefill.email="by@ghumo.com"
+          data-theme.color="#F37254"
+        ></script>
+        {% endcomment %}
+      {% comment %} </form> {% endcomment %}
+
+
+
+
+
+      {% comment %} <form class="text-center border border-light p-5" 
+      method="post" 
+      > {% endcomment %}
+        {% comment %} {% csrf_token %} {% endcomment %}
+        {% comment %} Enter Your Name : 
+        <input type="text" name="name" id="">
+        <br />
+        <br />
+        Enter Your Email : 
+        <input type="text" name="email" id="">
+        <br />
+        <br />
+        Enter Your Phone : 
+        <input type="text" name="phone" id="">
+        <br />
+        <br />
+        <p>Amount : Rs. {{amount}}</p>
+        <br />
+        <br />
+        <button class="rzp-button1 razorpay">Pay</button>
+        <br />
+      </form>
+
+
+
+    </div>
+    {% block scripts %}
+    
+      <script src="/static/js/checkout.js"></script>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    {% endblock scripts %}
+  </body>
+</html> {% endcomment %}
+{% comment %} {% endblock %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BharatYatra</title>
+        <!-- <style>
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #f1f1f1;
+                padding: 50px;
+                border-radius: 25px;
+                box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .biiling {
+                font-size: 36px;
+                font-weight: bold;
+                color: #444;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            label {
+                font-size: 20px;
+                color: #333;
+            }
+
+            input,
+            button {
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 18px;
+                width: 100%;
+            }
+
+            input {
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #33cc33;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #22aa22;
+            }
+
+            .phone,
+            .email {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .count {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .count button {
+                background-color: transparent;
+                font-size: 18px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .count button:hover {
+                background-color: #ccc;
+            }
+
+            .count label {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+
+            .T_N_P label {
+                font-size: 20px;
+                color: #333;
+                font-weight: bold;
+            }
+
+            @media screen and (max-width: 480px) {
+                .form-container {
+                    width: 100%;
+                }
+
+                .biiling {
+                    font-size: 28px;
+                }
+
+                label {
+                    font-size: 18px;
+                }
+
+                input,
+                button {
+                    padding: 8px;
+                    font-size: 16px;
+                }
+
+                .count button {
+                    padding: 6px;
+                    font-size: 16px;
+                }
+
+                .count label {
+                    font-size: 18px;
+                    margin-right: 8px;
+                }
+            }
+        </style> -->
+
+        <!-- <style>
+            .form-container {
+                width: 100%;
+                height: 100vh;
+                padding: 5rem 10%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #f1f1f1;
+            }
+            form {
+                width: 700px;
+                /* margin: 5rem 10%; */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .biiling {
+                font-size: 36px;
+                font-weight: bold;
+                color: #444;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            .uname {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                gap: 10px;
+            }
+
+            .name > label {
+                font-size: 24px;
+            }
+
+            label {
+                font-size: 20px;
+                color: #333;
+            }
+
+            input,
+            button {
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 18px;
+                width: 100%;
+            }
+
+            input {
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #33cc33;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #22aa22;
+            }
+
+            .phone,
+            .email {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .count {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border: 1px solid#ccc;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .count button {
+                background-color: transparent;
+                font-size: 18px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .count button:hover {
+                background-color: #ccc;
+            }
+
+            .count label {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+
+            .T_N_P label {
+                font-size: 20px;
+                color: #333;
+                font-weight: bold;
+            }
+
+            .count input {
+                width: 50px;
+                text-align: center;
+            }
+
+            @media screen and (max-width: 480px) {
+                .form-container {
+                    width: 100%;
+                }
+
+                .biiling {
+                    font-size: 28px;
+                }
+
+                label {
+                    font-size: 18px;
+                }
+
+                input,
+                button {
+                    padding: 8px;
+                    font-size: 16px;
+                }
+
+                .count button {
+                    padding: 6px;
+                    font-size: 16px;
+                }
+
+                .count label {
+                    font-size: 18px;
+                    margin-right: 8px;
+                }
+            }
+        </style> -->
+    
+        <style>
+        .form-container {
+            width: 100%;
+            height: 100vh;
+            {% comment %} padding: 5rem 10%; {% endcomment %}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f1f1f1;
+        }
+        
+        form {
+            width: 90%;
+            /* margin: 5rem 10%; */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .biiling {
+            font-size: 36px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .uname {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 10px;
+        }
+        
+        .name > label {
+            font-size: 24px;
+        }
+        
+        label {
+            font-size: 20px;
+            color: #333;
+            justify-content: center;
+        }
+        
+        input,
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 18px;
+            /* width: 100%; */
+        }
+        
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            height: 70px;
+            width: 100%;
+            font-size: 35px;
+        }
+        
+        button {
+            background-color: #33cc33;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #22aa22;
+        }
+        
+        .phone,
+        .email,
+        .package_name,
+        .category_name,
+        .price {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .uname {
+            gap: 100px;
+        }
+
+        .phone {
+            gap: 85px;
+        }
+
+        .email {
+            gap: 100px;
+        }
+
+        .phone_number {
+            width: 100%;
+        }
+
+        .package_name {
+            gap: 30px;
+        }
+
+        .category_name {
+            gap: 30px;
+        }
+
+        .price {
+            gap: 110px;
+        }
+
+        .T_N_P {
+            width: 100%;
+            
+        }
+        
+        .count {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .count button {
+            /* background-color: transparent; */
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .count button:hover {
+            background-color: #ccc;
+        }
+        
+        .count label {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .count input {
+            width: 70px;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 480px) {
+            .form-container {
+                width: 100%;
+            }
+        
+            .biiling {
+                font-size: 28px;
+            }
+        
+            label {
+                font-size: 18px;
+            }
+        
+            input,
+            button {
+                padding: 8px;
+                font-size: 16px;
+            }
+        
+            .count button {
+                padding: 6px;
+                font-size: 16px;
+            }
+        
+            .count label {
+                font-size: 18px;
+                margin-right: 8px;
+            }
+        }</style>
+    </head>
+    <body style="background-color: #f1f1f1;">
+        <div class="form-container">
+
+            <form action="" method="post">
+                    {% comment %} PAYMENT 1.0 {% endcomment %}
+                    {% comment %} <form action="https://www.example.com/payment/success/" method="post"> {% endcomment %}
+                        
+                        
+                    {% comment %} PAYMENT 2.0 {% endcomment %}
+                    {% comment %} <form action="success" method="post"> {% endcomment %}
+                {% csrf_token %}
+                <br><br><br>
+                <div class="biiling">Package Billing Form </div>
+                <div class="uname">
+                    <label for="name">Name</label>
+                    {% comment %} <input type="text" name="name" id="name" /> {% endcomment %}
+                    <p name="jsname">{{user.username}}</p>
+                    {% comment %} <input type="text" name="jsname" id="" value="{{user.username}}" > {% endcomment %}
+                </div>
+                {% comment %} <div class="phone">
+                    <label for="phoneNo">Mobile Number</label>
+                    <div class="phone_number">
+                        <input type="tel" name="phoneNo" id="" pattern="[0-9]{10}" required>
+                    </div>
+                </div> {% endcomment %}
+                <div class="email">
+                    <label for="email">Email</label>
+                    {% comment %} <input type="email" name="email" id="" /> {% endcomment %}
+                    <P style="text-transform:lowercase;" name="jsemail">{{user.email}}</P>
+                    {% comment %} <input type="email" name="jsemail" id="" value="{{user.email}}" > {% endcomment %}
+                </div>
+                <div class="package_name">
+                    <label for="pack_name">Package Name </label>
+                    {% comment %} <input type="text" name="package" id="pack_name" /> {% endcomment %}
+                    <p name="jspack_name">{{p.title}}</p>
+                    {% comment %} <input type="text" name="jspack_name" id="" value="{{p.title}}" > {% endcomment %}
+                </div>
+                <div class="category_name">
+                    <label for="">Category Name </label>
+                    <p name="jscat_name">{{p.category.title}}</p>
+                    {% comment %} <input type="text" name="jscat_name" id="" value="{{p.category.title}}"> {% endcomment %}
+                </div>
+                <div class="price">
+                    <label for="price">Price </label>
+                    <p name="jsprice" id="price">{{ p.price }}</p>
+                    {% comment %} <input type="number" name="jsprice" id="" value="{{ p.price }}" />  {% endcomment %}
+                </div>
+                
+                <div class="T_N_P">
+                    <label for="T_N_P">Enter Total Number of Travelers Below:</label>
+                    <div class="count">
+                        <div class="gen">
+                            <label for="Male">No. of Male: </label>
+                            <input type="number" min="0" max="20" value="1" name="male_count" class="mfc" id="male_count" />
+                        </div>
+                        <div class="gen">
+                            <label for="Female">No. of Female: </label>
+                            <input type="number" min="0" max="20" value="0" name="female_count" class="mfc" id="female_count" />
+                        </div>
+                        <div class="gen">
+                            <label for="Child">No. of Child: </label>
+                            <input type="number" min="0" max="20" value="0" name="child_count" class="mfc" id="child_count" />
+                        </div>
+                        <div class="gen">
+                            <label for="OtherGender">No. of Other Gender: </label>
+                            <input type="number" min="0" max="20" value="0" name="other_count" class="mfc" id="other_count" />
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                {% comment %} <button type="submit" id="rzp-button1" class="btn">Proceed to Pay</button> {% endcomment %}
+                {% comment %} <button type="submit" class="btn">Proceed to Pay</button> {% endcomment %}
+
+            {% comment %} PAYMENT 1.0 {% endcomment %}
+            </form>
+        </div>
+        
+        <script>
+            // Function to update the price based on the number of travelers
+            function updatePrice() {
+                var maleCount = parseInt(document.getElementById('male_count').value);
+                var femaleCount = parseInt(document.getElementById('female_count').value);
+                var childCount = parseInt(document.getElementById('child_count').value);
+                var otherCount = parseInt(document.getElementById('other_count').value);
+            
+                var totalTravelers = maleCount + femaleCount + childCount + otherCount;
+                
+                var updatedPrice = totalTravelers * {{ p.price }};
+                
+                // Display the updated price
+                document.getElementById('price').textContent = updatedPrice.toFixed(2); // Format to 2 decimal places
+            }
+            
+            // Attach the updatePrice function to the change event of the input fields
+            var inputs = document.querySelectorAll('.mfc');
+            inputs.forEach(function(input) {
+                input.addEventListener('change', updatePrice);
+            });
+        </script>
+
+
+        {% comment %} PAYMENT 1.0 {% endcomment %}
+        {% comment %} 
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                "key": "rzp_test_d4DEwCLVLZ40Qn", // Enter the Key ID generated from the Dashboard
+                "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "BharatYatra",
+                "description": "Package Purchased Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response){
+
+
+                window.location.href = 'http://127.0.0.1:8000/billing/g1h1ghaa52/success/?razorpay_payment_id=${response.razorpay_payment_id}&razorpay_order_id=${response.razorpay_order_id}&razorpay_signature=${razorpay_signature}'
+
+
+//                    alert(response.razorpay_payment_id);
+//                    alert(response.razorpay_order_id);
+//                    alert(response.razorpay_signature)
+                },
+                "prefill": {
+                    "name": "Denuka Sharma",
+                    "email": "naklipiyu10@gmail.com",
+                    "contact": "7041973300"
+                },
+    //            "notes": {
+    //                "address": "Razorpay Corporate Office"
+    //            },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+            });
+            document.getElementById('rzp-button1').onclick = function(e){
+                rzp1.open();
+                e.preventDefault();
+            }
+            </script> 
+            {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% comment %} PAYMENT 2.0 {% endcomment %}
+        {% comment %} <button type="submit">Proceed to Pay </button>
+        <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_d4DEwCLVLZ40Qn"
+        data-amount="50000"
+        data-currency="INR"
+        data-order_id="{{payment.id}}"
+        data-buttontext="Proceed to Pay with Razorpay"
+        data-name="BharatYatra"
+        data-description="Package Booking !"
+        data-image="https://example.com/your_logo.jpg"
+        data-prefill.name="Denuka Sharma"
+        data-prefill.email="naklipiyu10@gmail.com"
+        data-theme.color="#F37254"
+        ></script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% comment %} PAYMENT 2.0 {% endcomment %}
+            {% comment %} </form>
+        </div> {% endcomment %}
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% comment %} PAYMENT 3.0 {% endcomment %}
+        <center>
+
+            <button class="razorpay" type="submit">Proceed to Pay </button>
+        </center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        {% block scripts %}
+
+        <script src="/static/js/checkout.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        {% endblock scripts %}
+
+    </body>
+</html>
+{% endblock %}

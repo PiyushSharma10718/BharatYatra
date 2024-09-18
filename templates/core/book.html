@@ -1,0 +1,366 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .user_photo {
+            width: 20%;
+            margin-bottom: 20px;
+        }
+
+        .user_photo input[type="image"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .left,
+        .right {
+            width: 45%;
+            margin-bottom: 20px;
+        }
+
+        .Book {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .name,
+        .gender,
+        .phone,
+        .doc {
+            margin-bottom: 20px;
+        }
+
+        .name label,
+        .gender label,
+        .phone label,
+        .doc label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .name input,
+        .gender input,
+        .phone input,
+        .doc input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .address {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+       .input_add {
+            width: 70%;
+        }
+
+        .input_add label,
+        .area label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input_add textarea,
+        .area input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .area {
+            width: 30%;
+        }
+
+        .area input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .left,
+            .right {
+                width: 100%;
+            }
+        }
+    </style> -->
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.Book {
+    text-align: center;
+}
+
+.user_photo {
+  /* width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; */
+  display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_photo input[type="image"] {
+  /* width: 100%; */
+  height: 50px;
+  border-radius: 25px;
+  border: 2px solid #a4a4a4;
+  cursor: pointer;
+}
+
+.user_photo label {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.left {
+  /* width: 45%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px; */
+  display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.left input[type="text"],
+.left input[type="tel"],
+.left input[type="email"],
+.left input[type="file"] {
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.gender {
+    display: flex;
+    flex-direction: row;
+    gap: 50PX;
+}
+
+.gender > div {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 5PX;
+}
+
+.left label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.gender div {
+  margin-bottom: 10px;
+}
+
+.phone,
+.doc {
+  margin-top: 20px;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.address {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.input_add {
+    margin-bottom: 20px;
+}
+.input_add label {
+    display: block;
+    margin-bottom: 5px;
+}
+.input_add textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+.area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+.area label {
+    display: block;
+    margin-bottom: 5px;
+}
+.area input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit_btn {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 20px;
+    border-radius: 25px;
+    border: 3px solid #000;
+    background-color: #f8f8f8;
+    padding: 12px;
+    cursor: pointer;
+}
+.submit_btn:hover {
+    background-color: purple;
+    color: white;
+
+}
+
+
+@media (max-width: 768px) { .user\_photo { width: 100%; } .left, .right { width: 100%; display: flex; flex-direction: column; margin-bottom: 20px; padding: 20px; background-color: #fff; border-radius: 4px; } .gender > div { display: flex; flex-direction: column; gap: 5PX; } .phone, .doc { margin-top: 20px; } .input\_add { margin-bottom: 20px; } .area { grid-template-columns: 1fr; } .area input { width: 100%;}}
+
+
+    </style>
+</head>
+<body>
+<div class="form_container">
+    <br><br><br>
+    <h2 class="Book">Booking Form</h2>
+    <form action="/billing/" method="post">
+      {% csrf_token %}
+    <div class="user_photo">
+        <!-- <input type="file" name="doc" id="doc" accept=".pdf,.jpg,.jpeg,.png" required> -->
+        <br>
+            <input type="image" src="https://imgs.search.brave.com/2HxAafB5VCE8F5NTrXe9TX9zcyi2K7jp0qnq7EBx940/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4u/c3RvY2tzbmFwLmlv/L2ltZy9zbWlsZXku/cG5n" alt="User">
+        <br>
+        <label for="username">{{user.username}}</label>
+    </div>
+    
+    <div class="left">
+        <div class="name">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Your First Name" required>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Your Last Name" required>
+        </div>
+        <div class="gender">
+            <label for="gender">Gender</label>
+            <div>
+                <input type="radio" name="gender" id="Male" value="Male" required>
+                <label for="Male">Male</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="Female" value="Female" required>
+                <label for="Female">Female</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="other" value="Other" required>
+                <label for="other">Other</label>
+            </div>
+        </div>
+        <div class="email">
+            {% comment %} <label for="phone">Phone Number</label>
+            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required> {% endcomment %}
+            <label for="email">Email</label>
+            <input style="text-transform:lowercase;" type="email" name="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="doc">
+            <label for="doc">Upload Your Personal Identification Document Below </label>
+            <input type="file" name="doc" id="doc" accept=".pdf" required>
+        </div>
+    </div>
+    <div class="right">
+        <div class="address">
+            <div class="input_add">
+                <label for="address">Address</label>
+                <textarea name="address" id="address" cols="30" rows="10" placeholder="Enter Your Address Here" required></textarea>
+            </div>
+            <div class="area">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" placeholder="City" required>
+                <label for="state">State</label>
+                <input type="text" name="state" id="state" placeholder="State" required>
+                {% comment %} <label for="country">Country</label>
+                <input type="text" name="country" id="country" placeholder="Country" required> {% endcomment %}
+                <label class="country">Country</label
+                    ><input
+                      type="text"
+                      placeholder="India"
+                      value="India"
+                      disabled
+                    />
+                <label for="pincode">Pincode</label>
+                <input type="number" name="pincode" id="pincode" placeholder="Pincode" required>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <center>
+        <a style="text-decoration:none;" class="btn" href="{% url 'core:billing' p.pid %}">{{p.title}} Submit !
+        </a>
+    </center>
+    <br>
+    <br>
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

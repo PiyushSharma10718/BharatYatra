@@ -1,0 +1,141 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tours and Travel Schedule</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .pack-desc {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .pack-desc img {
+        border-radius: 10px;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .pack-title {
+        color: #007bff;
+        font-size: 28px;
+        margin-top: 10px;
+      }
+
+      .schedule-container {
+        margin-top: 20px;
+      }
+
+      .schedule-day {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .schedule-day h2 {
+        color: #007bff;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+      }
+
+      .activity {
+        margin: 10px 0;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .activity::before {
+        content: "\2022";
+        color: #007bff;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="pack-desc">
+        <img
+          {% comment %} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0uqJSNg24VMInXt5_Ki3deyAl6LJ5fxsLg7V7urzN1w&s" {% endcomment %}
+          src="{{ p.image.url }}"
+          alt="Package Image"
+        />
+        <h2 class="pack-title">{{p.title}}</h2>
+      </div>
+      <div class="schedule-container">
+        <div class="schedule-day">
+          <h2>Day 1: Arrival in {{p.title}}</h2>
+          <p class="">
+            - Arrive at airport/stations and check in to the hotel
+          </p>
+          <p class="">- 7:00 AM: Breakfast at a local restaurant</p>
+          <p class="">- 1:00 PM: Local at a local restaurant</p>
+          <p class="">- 2:00 PM: Exploring the near by places !</p>
+          <p class="">- 8:00 PM: Dinner at a local restaurant</p>
+        </div>
+        <div class="schedule-day">
+          <h2>Day 2 : Resting in {{p.title}}</h2>
+          <p class="">
+            {% comment %} - Arrive at airport and check in to the hotel {% endcomment %}
+          </p>
+          <p class="">- 7:00 AM: Breakfast at a local restaurant</p>
+          <p class="">- 10:00 AM: Spas and massage </p>
+          <p class="">- 1:00 PM: Lunch at a local restaurant</p>
+          <p class="">- 8:00 PM: Dinner at a local restaurant</p>
+        </div>
+
+        <div class="schedule-day">
+          <h2>Day 3: Exploring {{p.title}}</h2>
+          <p class="">
+            - 9:00 AM: Visit the Popular places nearby 100km
+          </p>
+          <p class="">- 7:00 AM: Breakfast at a local restaurant</p>
+          <p class="">- 2:00 PM: Lunch at a local restaurant</p>
+          <p class="">- 10:00 PM: Dinner Time </p>
+        </div>
+        <div class="schedule-day">
+          <h2>Day 4: Departing from {{p.title}}</h2>
+          <p class="">
+            {% comment %} - 9:00 AM: Visit the Statue of Liberty and Ellis Island {% endcomment %}
+            - Departing from at airport/stations and check out to the hotel
+          </p>
+          <p class="">- 7:00 AM: Breakfast at a local restaurant</p>
+          <p class="">- 11:00 PM: Lunch at the Hotel</p>
+          <p class="">- 02:00 PM: Thank you and visit again Greetings !</p>
+        </div>
+
+        {% comment %} <div class="schedule-day"> {% endcomment %}
+          <center>
+            <a class="btn" href="{% url 'core:book' p.pid %}">Book Now</a>
+          </center>
+        {% comment %} </div> {% endcomment %}
+        <!-- Add more days as needed -->
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

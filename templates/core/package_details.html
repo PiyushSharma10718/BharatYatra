@@ -1,0 +1,998 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Details | Package | BharatYatra</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            .containe {
+                
+                /* margin: 0 auto;
+                padding: 40px; */
+            }
+
+            .inner_container {
+              padding: 5rem 10%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .package_name {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1rem;
+              margin-bottom: 1rem;
+          }
+          
+          .left {
+              width: 70%;
+          }
+          
+          .right {
+              width: 30%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+          }
+          
+          .name {
+              font-size: 2rem;
+              font-weight: bold;
+              margin-bottom: 0.5rem;
+          }
+          
+          .category {
+              font-size: 1.5rem;
+              color: #888;
+              margin-bottom: 1rem;
+          }
+          
+          .loc {
+              display: flex;
+              align-items: center;
+              margin-bottom: 1rem;
+          }
+          
+          .loc a {
+              text-decoration: none;
+              color: #333;
+              margin-left: 0.5rem;
+          }
+          
+          .price {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: #f00;
+              margin-bottom: 0.5rem;
+          }
+          
+          .price_offer {
+              font-size: 1.2rem;
+              color: #0f0;
+              margin-bottom: 1rem;
+          }
+          
+          button {
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              padding: 0.5rem 1rem;
+              border-radius: 0.25rem;
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+          }
+          
+          button:hover {
+              background-color: #0056b3;
+          }
+
+            .images {
+                width: 100%;
+                height: 100%;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                overflow: hidden;
+                margin-top: 20px;
+            }
+
+            .description {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+            }
+
+            .description h4 {
+                margin: 0;
+                margin-top: 20px;
+            }
+
+            .duration {
+                display: flex;
+                gap: 100px;
+                /* justify-content: space-between; */
+                align-items: center;
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .duration .days {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .location {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .location .map {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .location iframe {
+                width: 100%;
+                height: 300px;
+            }
+
+            .explore_packages {
+                padding: 20px;
+                /* background-color: #f0f0f0; */
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .explore_packages .head {
+                margin-bottom: 14px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .explore_packages .head a {
+              font-size: 16px;
+            }
+            
+            .carousel-wrapper {
+                width: 100%;
+                /* max-width: 900px; */
+                aspect-ratio: 16/9;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .slide {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+                position: absolute;
+                transition: transform 300ms ease-out;
+            }
+
+            .slide img {
+              width: 100%;
+              height: 100%;
+              aspect-ratio: 5/1;
+              object-fit: cover;
+              
+                border-radius: inherit;
+            }
+
+            .carousel-wrapper .btn {
+                font-size: 2rem;
+                background: rgba(0, 0, 0, 0.7);
+                color: #00c2d8;
+                padding: 8px 10px;
+                border-radius: 50%;
+                border: none;
+                margin: 10px;
+                position: absolute;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+            .carousel-wrapper .btn:hover {
+                background: rgba(0, 0, 0, 1);
+            }
+            .btn.previous {
+                top: 50%;
+                left: 0;
+            }
+            .btn.next {
+                top: 50%;
+                right: 0;
+            }
+
+            {% comment %} i have added this in this style ! {% endcomment %}
+
+            .image-container {
+                display: flex;
+            }
+
+            img {
+              /*  margin: 10px; */
+                width: 150px;
+                height: auto;
+            }
+
+            .rounded {
+                border-radius: 15px;
+            }
+        </style>
+
+        {% comment %} i have added this style ! {% endcomment %}
+
+        <style>
+            .VIpgJd-ZVi9od-l4eHX-hSRGPd img {
+                width: 50px;
+                height: 5px;
+                padding: 0;
+                margin: 0;
+            }
+            /* General Styles */
+            /* General Styles */
+            .package-container {
+                /* display: flex;
+  justify-content: center;
+  padding: 20px; */
+                place-items: center;
+                background-color: #f5f5f5; /* Light gray background */
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                grid-gap: 15px; /* Smaller gap for a tighter layout */
+            }
+
+            .grid-item {
+                background-color: #fff;
+                width: 300px;
+                height: 400px; /* White background for content */
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+                transition: transform 0.2s ease-in-out; /* Add hover effect (optional) */
+            }
+
+            .grid-item:hover {
+                transform: translateY(
+                    -2px
+                ); /* Slight lift on hover (optional) */
+            }
+
+            .package-image {
+                height: 145px;
+            }
+
+            .package-image img {
+                aspect-ratio: 5/3;
+                object-fit: cover;
+                background-position: 0px 100px;
+                background-size: cover;
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .price-discount span {
+                position: absolute;
+                padding: 5px;
+                text-align: center;
+                font-size: 11px;
+                border-radius: 5px 0px 5px 0px;
+                background-color: red;
+                color: #fff;
+                z-index: 1;
+            }
+
+            /* Product Information Styles */
+            .package-content {
+                width: 100%;
+                height: 215px;
+                padding-top: 15px;
+            }
+
+            .package-content h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                color: #333; /* Darker text for better contrast */
+            }
+
+            .package-content h4 {
+                font-size: 16px;
+                color: #666;
+                margin-bottom: 5px;
+            }
+
+            .price {
+                display: flex; /* Display price elements side-by-side */
+                align-items: center; /* Vertically align price elements */
+                margin-bottom: 10px;
+            }
+
+            .current-price {
+                font-size: 18px;
+                font-weight: bold;
+                color: #2ecc71; /* Green for current price */
+                margin-right: 5px;
+            }
+
+            .old-price {
+                font-size: 14px;
+                color: #999;
+                text-decoration: line-through;
+            }
+
+            .package-content p {
+                font-size: 14px;
+                {% comment %} height: 40px; {% endcomment %}
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #666;
+                line-height: 1.5; /* Increase line spacing for readability */
+                margin-bottom: 15px;
+            }
+
+            /* Call to Action Buttons */
+            .package-buttons {
+                display: flex;
+                float: bottom;
+                justify-content: space-between;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #fff;
+                font-size: 14px;
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            .btn-more-info {
+                background-color: #3498db; /* Blue button */
+            }
+
+            .btn-more-info:hover {
+                background-color: #2980b9; /* Darker blue on hover */
+            }
+
+            .btn-book-now {
+                background-color: #2ecc71; /* Green button */
+            }
+
+            .btn-book-now:hover {
+                background-color: #27ae60; /* Darker green on hover */
+            }
+        </style>
+    </head>
+    <body>
+        <main class="containe">
+            <section class="inner_container">
+                <div class="package_name">
+                    <div class="left">
+                        <h3 class="name">{{p.title}}</h3>
+                        <h4 class="category">{{p.category.title}}</h4>
+                        {% comment %} <a href="https://www.google.com/maps"> {% endcomment %}
+                        <a href="https://www.google.com/maps/place/{{p.title}}" target="_blank">
+                            <div class="loc"><h4>
+                                click here : 
+                            </h4>
+                                <span class="material-symbols-outlined">
+                                    location_on
+                                </span>
+                                <h4 class="p">{{p.title}}, Bharat</h4>
+                            </div>
+                            <br />
+                            <br />
+                        </a>
+                        {% comment %} <h5>{{p.description|truncatechars:149|safe}}</h5> {% endcomment %}
+                        <h5>{{p.description|safe}}</h5>
+                    </div>
+                    <div class="right">
+                        {% comment %}
+                        <h4 class="price price_offer">
+                            -{{p.get_percentage|floatformat:0}}% OFF
+                        </h4>
+                        <br />
+                        <br />
+                        <br />
+                        {% endcomment %}
+                        {% comment %} <a href="/packages">
+                            <button type="submit">View All Packages</button>
+                        </a> {% endcomment %}
+                    </div>
+                    <div class="right">
+                        <h4 class="price price_offer">
+                            -{{p.get_percentage|floatformat:0}}% OFF
+                        </h4>
+                        <br />
+                        <br />
+                        <br />
+
+                        <h3 class="price">
+                            Price is : ₹{{p.price|floatformat:0}}
+                        </h3>
+
+                        <h6 style="text-decoration:line-through;" class="">
+                            Old Price is : ₹{{p.old_price|floatformat:0}}
+                        </h6>
+                        {% if request.user.is_authenticated %} 
+                        <a href="{% url 'core:book' p.pid %}" class="btn">book now</a>
+                        <a class="btn" href="{% url 'core:s1' p.pid %}">Schedule</a>
+                        {% else %}
+                        <a class="btn" href="{% url 'userauths:sign-in' %}">Book now</a>
+                        <a class="btn" href="{% url 'userauths:sign-in' %}">Schedule</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="images">
+                    <div class="carousel-wrapper">
+                        <div class="slide" data-slide>
+                            {% comment %}
+                            <img
+                                src="https://picsum.photos/id/1015/1200/500"
+                                alt="Image"
+                            />
+                            {% endcomment %}
+                            <img src="{{ p.image.url }}" alt="Image" />
+                        </div>
+
+                        {% for p in p_image %}
+                        <div class="slide" data-slide>
+                            <img src="{{p.images.url}}" alt="Image" />
+                        </div>
+                        {% endfor %} {% comment %} {% for p in p_image %}
+                        <div class="slide" data-slide>
+                            <img src="p_image.images.url" alt="Image" />
+                        </div>
+                        {% endfor %} {% endcomment %}
+
+                        <button class="btn previous" data-button="previous">
+                            <
+                        </button>
+                        <button class="btn next" data-button="next">></button>
+                    </div>
+                </div>
+
+                {% comment %} i have added this in this layout ! {% endcomment
+                %}
+
+                <div class="image-container">
+                    <img src="{{p.image.url}}" alt="" class="rounded" />
+                    {% for p in p_image %}
+                    <img src="{{p.images.url}}" alt="" class="rounded" />
+                    {% comment %} <img src="bananas.png" alt="Bananas" /> {%
+                    endcomment %} {% comment %}
+                    <img src="watermelon.png" alt="Watermelon" /> {% endcomment
+                    %} {% comment %}
+                    <img src="durian.png" alt="Durian" class="rounded" /> {%
+                    endcomment %} {% endfor %}
+                </div>
+
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>{{p.description | safe}}</p>
+                    <hr />
+                    <p>{{p.specifications | safe}}</p>
+                </div>
+
+                <div class="duration">
+                    <h4>Published On :</h4>
+                    <div class="days">
+                        {% comment %}
+                        <div class="date">{{p.published_date}}</div>
+                        {% endcomment %}
+                        <div class="date">
+                            <h3>Package Published Date : 
+                                {{p.published_date|date:"d M, Y"}}
+                            </h3>
+                        </div>
+
+                        
+                        {% comment %} <span>to</span>
+                        <div class="date">01-02-2024</div>
+                        {% endcomment %}
+                    </div>
+                </div>
+
+                <div class="duration">
+                    {% comment %}
+                    <h4>Book the Package within Published Date :</h4>
+                    {% endcomment %}
+                    <div class="days">
+                        <h4 class="date">
+                            Book the Package within {{p.package_life_date}}
+                            Day{{p.package_life_date|pluralize}} From Published
+                            Date !
+                        </h4>
+                        {% comment %} <span>to</span> {% endcomment %} 
+                        {% comment %}
+                        <div class="date">01-02-2024</div>
+                        {% endcomment %}
+                    </div>
+                </div>
+
+                {% comment %} <div class="duration">
+                    <h4>Seat{{p.package_left_count|pluralize}} Left :</h4>
+                    <div class="days">
+                        <div class="date">
+                            Only {{p.package_left_count}}
+                            Seat{{p.package_left_count|pluralize}}
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+
+                <div class="duration">
+                    <h4>Packages Dates :</h4>
+                    <div class="days">
+                            <div class="date"><h4>{{p.package_date_from}}</h4></div>
+                            <span>-----></span>
+                            <div class="date"><h4>{{p.package_date_to}}</h4></div>
+                    </div>
+                </div>
+
+                <div class="duration">
+                    <h4>Tags :</h4>
+                    <div class="days">
+                        <div class="date">
+                            {%for tag in p.tags.all%}
+                            <h5>
+                                <a href=" {% url 'core:tags' tag.slug %} ">
+                                    {{tag.name}},
+                                </a>
+                            </h5>
+                            {% endfor %}
+                        </div>
+                        {% comment %} <span>-----></span>
+                        <div class="date">To : 01-02-2024</div>
+                        {% endcomment %}
+                    </div>
+                </div>
+
+                <div class="duration">
+                        <h3>Things to keep in mind !</h3>
+                        <h5>{{p.specifications|safe}}</h5>
+                        {% comment %} <h5></h5> {% endcomment %}
+                </div>
+
+                {% comment %} <div class="location">
+                    <div class="map">
+                        <span class="material-symbols-outlined"> map </span>
+                        <h4>Location</h4>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74843083433!2d72.41492986821524!3d23.020474100489913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709291683745!5m2!1sen!2sin"
+                        width="400"
+                        height="250"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div> {% endcomment %}
+                <div class="explore_packages">
+                  <div class="head">
+                    {% if packages %}
+                    <h1>
+                        Below are the Related Packages of {{p.category.title}} !
+                    </h1>
+                    {% endif %}
+                    <a href="/packages">
+                      <button type="submit">View All Packages</button>
+                  </a>
+                </div>
+                    <div class="packages">
+                        {% comment %} More Packages yaha par offer wala ya
+                        packages wala section dal dena {% endcomment %} 
+                        {% comment %} {% for p in packages %} {% endcomment %} 
+                        {% comment %}
+                        <div class="package-container">
+                            {% for p in packages %}
+                            <div class="package-item">
+                                <div class="package-image">
+                                    <div class="price-discount">
+                                        <b
+                                            >-{{ p.get_percentage|floatformat:0
+                                            }}% OFF</b
+                                        >
+                                    </div>
+                                    <img src="{{ p.image.url }}" alt="" />
+                                </div>
+                                <div class="package-content">
+                                    <h3>{{ p.title }}</h3>
+                                    <h4>{{ p.category.title }}</h4>
+                                    <h3>Rs. {{ p.price|floatformat:0 }}</h3>
+                                    <h5>Rs. {{ p.old_price|floatformat:0 }}</h5>
+                                    <p>{{ p.description }}</p>
+                                    <div class="package-buttons">
+                                        <a
+                                            href="{% url 'core:package_details' p.pid %}"
+                                            class="btn"
+                                            >More Info</a
+                                        >
+                                        <a href="/book" class="btn">book now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endcomment %} {% load static %}
+
+                        <div class="package-container">
+                            <div class="grid-container">
+                                {% for p in packages %}
+                                <div class="grid-item">
+                                    <div class="package-image">
+                                        <div class="price-discount">
+                                            <span
+                                                ><b
+                                                    >-{{ p.get_percentage | floatformat:0 }}% OFF</b
+                                                ></span
+                                            >
+                                        </div>
+                                        <img
+                                            src="{{ p.image.url }}"
+                                            alt="{{ p.title }}"
+                                        />
+                                    </div>
+                                    <div class="package-content">
+                                        <h3>{{ p.title }}</h3>
+                                        <h4>{{ p.category.title }}</h4>
+                                        <div class="price">
+                                            <span class="current-price"
+                                                >Rs. {{ p.price|floatformat:0 }}</span
+                                            >
+                                            <span class="old-price"
+                                                >Rs. {{ p.old_price|floatformat:0 }}</span
+                                            >
+                                        </div>
+                                        <p>{{ p.description | safe }}</p>
+                                        <div class="package-buttons">
+                                            <a
+                                                href="{% url 'core:package_details' p.pid %}"
+                                                class="btn btn-more-info"
+                                                >More Info</a
+                                            >
+                                            {% if request.user.is_authenticated %}
+                                            <a href="{% url 'core:book' p.pid %}" class="btn">book now</a>
+                                            {% else %}
+                                            <a class="btn" href="{% url 'userauths:sign-in' %}">Login now !</a>
+                                            {% endif %}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!--  <div class="box">
+                            <div class="image">
+                                <div class="price_offer">
+                                    <b>-{{ p.get_percentage|floatformat:0 }}% OFF
+                                    </b>
+                                </div>
+                                {% comment %}
+                                <span
+                                    ><b
+                                        >-{{ p.get_percentage|floatformat:0 }}%
+                                        OFF</b
+                                    ></span
+                                >
+                                {% endcomment %}
+                                <img src="{{ p.image.url }}" alt="" />
+                            </div>
+                            <div class="content">
+                                <h3>{{ p.title }}</h3>
+                                <h4>{{ p.category.title }}</h4>
+                                <h3>Rs. {{ p.price|floatformat:0 }}</h3>
+                                <h5>Rs. {{ p.old_price|floatformat:0 }}</h5>
+                                <p>{{ p.description }}</p>
+                                <a
+                                    href="{% url 'core:package_details' p.pid %}"
+                                    class="btn"
+                                    >More Info
+                                </a>
+                                <a href="/book" class="btn">book now</a>
+                            </div>
+                        </div>-->
+                        {% comment %} {% endfor %} {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+                        
+                        <section class="reviews">
+                            <h1 class="heading-title">clients reviews</h1>
+                            <h1>
+                                Total Review{{reviews.count|pluralize}} :
+                                {{reviews.count}}
+                            </h1>
+
+                            <div class="avg">
+                                <h4>
+                                    {% if user.is_authenticated == False %}
+                                    <br>
+                                        <a href="{% url 'userauths:sign-in' %}">Login to add your review !</a>
+                                    {% endif %}
+                                    {% if user.is_authenticated %}
+                                    {% if average_rating.rating >= 1 %}
+                                    {% with average_rating.rating|floatformat:1 as avg_rating %}
+                                    {% for i in "12345" %}
+                                    {% if avg_rating >= i %}
+                                    <i class="fas fa-star text-warning"></i>
+                                    {% else %}
+                                    <i class="far fa-star text-warning"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endwith %}
+                                    {{ avg_rating }}  / 5.0
+                                    <br>
+                                    {{average_rating.rating|floatformat:1}} / 5.0
+                                    {% else %}
+                                    <h3>No review yet !</h3>
+                                    {% endif %}
+                                    {% endif %}
+                                </h4>
+                            </div>
+
+                            <div class="swiper reviews-slider">
+                                <div class="swiper-wrapper">
+                                    {% for r in reviews%}
+                                    <div class="swiper-slide slide">
+                                        <h6>
+                                            Reviewed On : {{r.date|date:"d M,Y"}}
+                                        </h6>
+                                        <div class="stars">
+                                            {% comment %}
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i> {% endcomment %} 
+                                            {% for r in r.rating|ljust:r.rating %}
+                                                <i class="fas fa-star text-warning"></i>
+                                            {% endfor %}
+                                        </div>
+                                        <p>{{r.review}}</p>
+                                        <h3>{{r.user.username|title}}</h3>
+                                        <img
+                                            src="https://th.bing.com/th?id=OIP.OesLvyzDO6AvU_hYUAT4IAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                                            alt=""
+                                        />
+                                    </div>
+                                    {% endfor %} {% comment %}
+                                    <div class="swiper-slide slide">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit. Est,
+                                            nam! Neque tempore numquam dolores
+                                            eveniet rerum accusantium, sap Lorem
+                                            ipsum dolor sit amet consectetur
+                                            adipisicing elit. Veniam itaque ipsa
+                                            inventore facere iure expedita,
+                                            necessitatibus dolore aliquid porro
+                                            sapiente. iente officia, totam quae
+                                            nisi magni explicabo eos praesentium
+                                            omnis est et ea!
+                                        </p>
+                                        <h3>john deo</h3>
+                                        <span>traveler</span>
+                                        <img
+                                            src="/static/images/pic-2.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <div class="swiper-slide slide">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit. Est,
+                                            nam! Neque tempore numquam dolores
+                                            eveniet rerum accusantium, Lorem
+                                            ipsum dolor sit amet consectetur
+                                            adipisicing elit. Officiis, minima?
+                                            sapiente officia, totam quae nisi
+                                            magni explicabo eos praesentium
+                                            omnis est et ea!
+                                        </p>
+                                        <h3>john deo</h3>
+                                        <span>traveler</span>
+                                        <img
+                                            src="/static/images/pic-3.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <div class="swiper-slide slide">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolotium omnis est et
+                                            ea!
+                                        </p>
+                                        <h3>john deo</h3>
+                                        <span>traveler</span>
+                                        <img
+                                            src="/static/images/pic-4.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <div class="swiper-slide slide">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p>Lorem ipsum doet conseca!</p>
+                                        <h3>john deo</h3>
+                                        <span>traveler</span>
+                                        <img
+                                            src="/static/images/pic-5.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <div class="swiper-slide slide">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p>
+                                            Lorem ipsu, nam! Neque tempore num,
+                                            totam quae nisi magni explicabo eos
+                                            praesentium omnis est et ea!
+                                        </p>
+                                        <h3>john deo</h3>
+                                        <span>traveler</span>
+                                        <img
+                                            src="/static/images/pic-6.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    {% endcomment %}
+                                </div>
+                            </div>
+                            <br /><br /><br />
+                            {% if request.user.is_authenticated %} 
+                            {% if make_review %}
+                            <strong class="text-success" id="review-res"
+                                ><h3></h3
+                            ></strong>
+                            <form
+                                class="hide-comment-form"
+                                id="commentForm"
+                                method="post"
+                                action="{% url 'core:ajax_add_review' p.id %}"
+                            >
+                                {% csrf_token %}
+                                <h1 class="hide-it">Add a Review :</h1>
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{review_form.review}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{review_form.rating}}
+                                        </div>
+                                    </div>
+                                    <button class="btn">Submit Review</button>
+                                </div>
+                            </form>
+                            {% endif %} {% endif %}
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+        <script>
+            const slides = document.querySelectorAll("[data-slide]");
+            const buttons = document.querySelectorAll("[data-button]");
+
+            let currSlide = 0;
+            let maxSlide = slides.length - 1;
+
+            const updateCarousel = (number = 0) => {
+                slides.forEach((slide, index) => {
+                    slide.style.transform = `translateX(${
+                        (index - number) * 100
+                    }%)`;
+                });
+            };
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    button.dataset.button == "next" ? ++currSlide : --currSlide;
+
+                    if (currSlide > maxSlide) {
+                        currSlide = 0;
+                    } else if (currSlide < 0) {
+                        currSlide = maxSlide;
+                    }
+
+                    updateCarousel(currSlide);
+                });
+            });
+            updateCarousel(currSlide);
+
+            setInterval(() => {
+                currSlide++;
+                if (currSlide > maxSlide) {
+                    currSlide = 0;
+                }
+                updateCarousel(currSlide);
+            }, 3000);
+        </script>
+    </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,214 @@
+{% comment %} {% extends 'base.html' %} {% block content %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BharatYatra</title>
+
+    <link rel="stylesheet" href="/static/css/profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div
+      style="border: 5px solid #cac2c2 !important"
+      class="container rounded bg-white mt-2 mb-2 border"
+    >
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div style="justify-content: center" class="row">
+        <div class="col-md-3">
+          <div
+            class="d-flex flex-column align-items-center text-center p-3 py-5"
+          ><br><br><br>
+            <img
+              class="rounded-circle mt-5"
+              width="150px"
+              {% comment %} src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" {% endcomment %}
+              
+              src="/static/images/default.jpg"
+              alt="Profile Image"/> 
+
+
+
+              <br>
+            <input type="file" name="profile_img" id="doc" accept=".jpg">
+        
+
+
+
+            <br>
+            <span class="font-weight-bold">{{user.username}}</span
+              >
+              <br>
+              <span class="text-black-50">{{user.email}}</span><span> </span>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="p-3 py-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">User Profile</h4>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="labels">User Name</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  placeholder="virat"
+                  name="fname"
+                  {% comment %} value="" {% endcomment %}
+                  value="{{ user.username }}"
+                  disabled
+                />
+              </div>
+              {% comment %} <div class="col-md-6">
+                <label class="labels">Last Name</label
+                ><input
+                  type="text"
+                  name="lname"
+                  class="form-control"
+                  value=""
+                  placeholder="jordan"
+                />
+              </div> {% endcomment %}
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Gender</label>
+                <!-- <select name="gender" id=""> -->
+                <select name="gender" id="" class="form-select">
+                  <option name="gender" value="Male">Male</option>
+                  <option name="gender" value="Female">Female</option>
+                  <option name="gender" value="">Other</option>
+                </select>
+              </div>
+
+              <div class="col-md-12">
+                <label class="labels">Mobile Number</label
+                ><input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  placeholder="7041972200"
+                  value=""
+                />
+              </div>
+
+              
+
+              <div class="col-md-12">
+                <label class="labels">Email ID</label
+                ><input
+                  type="email"
+                  class="form-control"
+                  placeholder="bharatyatra5837@gmail.com"
+                  value="{{user.email}}"
+                  disabled
+                />
+              </div>
+
+              <div class="col-md-12">
+                <label class="labels">Address 1</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  placeholder="5, krishn villa, gandhinagar"
+                  value=""
+                />
+              </div>
+              {% comment %} <div class="col-md-12">
+                <label class="labels">Address 2</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  placeholder="Road Name, Area, Colony"
+                  value=""
+                />
+              </div> {% endcomment %}
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label class="labels">City</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  name="city"
+                  placeholder="Gandhinagar"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="labels">State/Region</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  name="state"
+                  value=""
+                  placeholder="Gujarat"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Country</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  placeholder="India"
+                  value="India"
+                  disabled
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Pin Code:</label>
+                <input
+                  type=""
+                  class="form-control"
+                  name="pincode"
+                  placeholder="Pincode"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="mt-5 text-center">
+              {% comment %} <a href="{% url 'userauths:sign-out' %}">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Log Out
+                </button>
+              </a> {% endcomment %}
+              {% comment %} <a href="/">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Go Back To Home Page
+                </button>
+              </a> {% endcomment %}
+              <a href="/">
+                <button class="btn btn-primary profile-button" onclick="saveProfile();" type="button">
+                  Save Profile
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+    <script>
+      function saveProfile() {
+          // Simulate saving profile (you can add AJAX request here to save data)
+          // For demonstration, just show an alert
+          if(true){
+            alert("Profile Saved Successfully!");
+          }
+      }
+  </script>
+  </body>
+</html>
+
+{% comment %} {% endblock %} {% endcomment %}

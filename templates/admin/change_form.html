@@ -1,0 +1,33 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+    {% comment %} {% if request.user.username == 'piyush' %} {% endcomment %}
+        {{ block.super }}
+        <div>
+            <br>
+            <a target="_blank" href="/daily_report">
+                <button type="button" class="button" id="custom_button">Generate Report !</button>
+            </a>
+            <br>
+            <br>
+            <a target="_blank" href="/daily_report_user">
+                <button type="button" class="button" id="custom_button">Report on User !</button>
+            </a>
+            <br>
+            <br>
+            <a target="_blank" href="/daily_report_review">
+                <button type="button" class="button" id="custom_button">Report on Review !</button>
+            </a>
+            <br>
+            <br>
+            <a target="_blank" href="/daily_report_package">
+                <button type="button" class="button" id="custom_button">Report on Package !</button>
+            </a>
+            <br>
+            <br>
+            <a target="_blank" href="/daily_report_category">
+                <button type="button" class="button" id="custom_button">Report on Category !</button>
+            </a>
+        </div>
+    {% comment %} {% endif %} {% endcomment %}
+{% endblock %}
